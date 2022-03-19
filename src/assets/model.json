@@ -1,0 +1,794 @@
+{
+    "model":"Trust ROI Calculator",
+    "industries":
+    [
+        {
+            "name":"Telecom",
+            "static":
+            [
+                {
+                    "title": "telecom_customer_serv",
+                    "value": 0.15,
+                    "type": "percentage"
+                },
+                {
+                    "title": "telecom_fraud_for_NA",
+                    "value": 0.20,
+                    "type": "percentage"
+                },
+                {
+                    "title": "telecom_one37_fraud_savings",
+                    "value": 0.40,
+                    "type": "percentage"
+                },
+                {
+                    "title": "telecom_data_breach_fee",
+                    "value": 0.05,
+                    "type": "percentage"
+                },
+                {
+                    "title": "telecom_cross_sell_cust_TELUS",
+                    "value": 0.0025,
+                    "type": "percentage"
+                },
+                {
+                    "title": "TELUS_customers_2020",
+                    "value": 12000000,
+                    "type": "number"
+                },
+                {
+                    "title": "telecom_one37_general_cost_savings",
+                    "value": 0.035,
+                    "type": "percentage"
+                },
+                {
+                    "title": "telecom_happy_customers",
+                    "value": 0.025,
+                    "type": "percentage"
+                },
+                {
+                    "title": "telecom_avg_churn_rate",
+                    "value": 0.22,
+                    "type": "percentage"
+                },
+                {
+                    "title": "telecom_avg_handling_time",
+                    "value": 370
+                },
+                {
+                    "title": "telecom_time_lost_to_passwords",
+                    "value": 14
+                },
+                {
+                    "title": "telecom_lost_password_cost",
+                    "value": 40
+                },
+                {
+                    "title": "telecom_lengthy_id_verification_cost",
+                    "value": 3.60
+                },
+                {
+                    "title": "telecom_call_per_minute_fee",
+                    "value": 0.95
+                }                            
+               
+            ],
+            "inputs":
+            [
+                {
+                    "title":"revenue",
+                    "type":"currency"
+                },                
+                {
+                    "title":"operating_expenses",
+                    "type":"currency"
+                },
+                {
+                    "title":"total_salary_of_employees",
+                    "type":"currency"
+                }, 
+                {
+                    "title":"num_of_consumers",
+                    "type":"number"
+                }, 
+                {
+                    "title":"num_of_annual_calls",
+                    "type":"number"
+                }
+ 
+            ],
+            "outputs":
+            [
+                {
+                    "title":"Fraud Cost Savings",
+                    "formula":"telecom_one37_fraud_savings*telecom_fraud_for_NA*revenue"
+                },
+                {
+                    "title":"Customer Service Savings",
+                    "formula":"telecom_one37_general_cost_savings*telecom_customer_serv*operating_expenses"
+                },
+                {
+                    "title":"Cost Savings Associated with Inputting No Passwords for Verification",
+                    "formula":"telecom_call_per_minute_fee*((3*telecom_time_lost_to_passwords*num_of_annual_calls)/60)"
+                },
+                {
+                    "title":"Cost Savings Associated with No Password Replacements",
+                    "formula":"0.5*telecom_lost_password_cost*num_of_annual_calls"
+                },
+                {
+                    "title":"Possible Cost Savings Associated with No Data Breaches",
+                    "formula":"telecom_data_breach_fee*revenue"
+                },
+                {
+                    "title":"Total Cost Savings (Excluding Data Breaches Cost Savings)",
+                    "formula":"(telecom_one37_fraud_savings*telecom_fraud_for_NA*revenue) + (telecom_one37_general_cost_savings*telecom_customer_serv*operating_expenses) + (telecom_call_per_minute_fee*((3*telecom_time_lost_to_passwords*num_of_annual_calls)/60)) + (0.5*telecom_lost_password_cost*num_of_annual_calls)"
+                },
+                {
+                    "title":"Revenue Generated from Happy and Loyal Customers",
+                    "formula":"telecom_happy_customers*revenue*(num_of_annual_calls/num_of_consumers)"
+                },
+                {
+                    "title":"Revenue Generated from Cross-Selling TELUS Customers",
+                    "formula":"(revenue/num_of_consumers)*telecom_cross_sell_cust_TELUS*TELUS_customers_2020"
+                },
+                {
+                    "title":"Estimated Total Impact Per Year",
+                    "formula":"(telecom_one37_fraud_savings*telecom_fraud_for_NA*revenue) + (telecom_one37_general_cost_savings*telecom_customer_serv*operating_expenses) + (telecom_call_per_minute_fee*((3*telecom_time_lost_to_passwords*num_of_annual_calls)/60)) + (0.5*telecom_lost_password_cost*num_of_annual_calls) + (telecom_happy_customers*revenue*(num_of_annual_calls/num_of_consumers)) + ((revenue/num_of_consumers)*telecom_cross_sell_cust_TELUS*TELUS_customers_2020)"
+                }
+            ]
+        },
+        {
+            "name":"Healthcare",
+            "static":
+            [
+                {
+                    "title": "health_fraud_for_NA",
+                    "value": 0.10,
+                    "type": "percentage"
+                },
+                {
+                    "title": "health_one37_fraud_savings",
+                    "value": 0.34,
+                    "type": "percentage"
+                },
+                {
+                    "title": "health_avg_wait_time_for_er",
+                    "value": 180
+                },
+                {
+                    "title": "health_time_lost_to_id_verify",
+                    "value": 10
+                },
+                {
+                    "title": "health_opportunity_cost",
+                    "value": 0.35
+                },
+                {
+                    "title": "health_denied_claims",
+                    "value": 0.09,
+                    "type": "percentage"
+                },
+                {
+                    "title": "health_denied_claims_for_data_inaccuracy",
+                    "value": 0.33,
+                    "type": "percentage"
+                },
+                {
+                    "title": "health_denied_claims_fee",
+                    "value": 118,
+                    "type": "percentage"
+                },
+                {
+                    "title": "health_duplicate_patient_records",
+                    "value": 0.18
+                },
+                {
+                    "title": "health_ip_duplicate_record_expenses",
+                    "value": 1950
+                },
+                {
+                    "title": "health_er_duplicate_record_expenses",
+                    "value": 800
+                },
+                {
+                    "title": "health_inpatient_stays",
+                    "value": 0.079
+                },
+                {
+                    "title": "health_er_visits",
+                    "value": 0.404
+                },
+                {
+                    "title": "health_data_breach_fee",
+                    "value": 0.05,
+                    "type": "percentage"
+                },
+                {
+                    "title": "health_cross_sell_cust_TELUS",
+                    "value": 0.0025,
+                    "type": "percentage"
+                },
+                {
+                    "title": "TELUS_customers_2020",
+                    "value": 12000000,
+                    "type": "number"
+                },
+                {
+                    "title": "health_happy_customers",
+                    "value": 0.025,
+                    "type": "percentage"
+                }                            
+               
+            ],
+            "inputs":
+            [
+                {
+                    "title":"revenue",
+                    "type":"currency"
+                },                
+                {
+                    "title":"operating_expenses",
+                    "type":"currency"
+                },
+                {
+                    "title":"total_salary_of_employees",
+                    "type":"currency"
+                }, 
+                {
+                    "title":"num_of_consumers",
+                    "type":"number"
+                }, 
+                {
+                    "title":"num_of_emergency_visits",
+                    "type":"number"
+                }
+            ],
+            "outputs":
+            [
+                {
+                    "title":"Fraud Cost Savings",
+                    "formula":"health_one37_fraud_savings*health_fraud_for_NA*revenue"
+                },
+                {
+                    "title":"No Duplicate Records Savings",
+                    "formula":"health_ip_duplicate_record_expenses*health_inpatient_stays*(health_duplicate_patient_records*num_of_consumers) + health_er_duplicate_record_expenses*health_er_visits*(health_duplicate_patient_records*num_of_consumers)/100"
+                },
+                {
+                    "title":"Shortened ID Verification Process Savings",
+                    "formula":"health_opportunity_cost*0.5*health_time_lost_to_id_verify*num_of_emergency_visits"
+                },
+                {
+                    "title":"No Hospital Claims with Inaccurate Data Savings",
+                    "formula":"health_denied_claims_for_data_inaccuracy*health_denied_claims_fee*(health_denied_claims*num_of_consumers)"
+                },
+                {
+                    "title":"Possible Cost Savings Associated with No Data Breaches",
+                    "formula":"health_data_breach_fee*revenue"
+                },
+                {
+                    "title":"Total Cost Savings (Excluding Data Breaches Cost Savings)",
+                    "formula":"(health_one37_fraud_savings*health_fraud_for_NA*revenue) + (health_ip_duplicate_record_expenses*health_inpatient_stays*(health_duplicate_patient_records*num_of_consumers) + health_er_duplicate_record_expenses*health_er_visits*(health_duplicate_patient_records*num_of_consumers)/100) + (health_opportunity_cost*0.5*health_time_lost_to_id_verify*num_of_emergency_visits) + (health_denied_claims_for_data_inaccuracy*health_denied_claims_fee*(health_denied_claims*num_of_consumers))"
+                },
+                {
+                    "title":"Revenue Generated from Happy and Loyal Customers",
+                    "formula":"health_happy_customers*revenue*(num_of_emergency_visits/num_of_consumers)"
+                },
+                {
+                    "title":"Revenue Generated from Cross-Selling TELUS Customers",
+                    "formula":"(revenue/num_of_consumers)*health_cross_sell_cust_TELUS*TELUS_customers_2020"
+                },
+                {
+                    "title":"Estimated Total Impact Per Year",
+                    "formula":"(health_one37_fraud_savings*health_fraud_for_NA*revenue) + (health_ip_duplicate_record_expenses*health_inpatient_stays*(health_duplicate_patient_records*num_of_consumers) + health_er_duplicate_record_expenses*health_er_visits*(health_duplicate_patient_records*num_of_consumers)/100) + (health_opportunity_cost*0.5*health_time_lost_to_id_verify*num_of_emergency_visits) + (health_denied_claims_for_data_inaccuracy*health_denied_claims_fee*(health_denied_claims*num_of_consumers)) + (health_happy_customers*revenue*(num_of_emergency_visits/num_of_consumers)) + ((revenue/num_of_consumers)*health_cross_sell_cust_TELUS*TELUS_customers_2020)"
+                }
+            ]
+        },
+        {
+            "name":"Insurance",
+            "static":
+            [
+                {
+                    "title": "insurance_customer_serv",
+                    "value": 0.225,
+                    "type": "percentage"
+                },
+                {
+                    "title": "insurance_fraud_for_NA",
+                    "value": 0.057,
+                    "type": "percentage"
+                },
+                {
+                    "title": "insurance_one37_fraud_savings",
+                    "value": 0.43,
+                    "type": "percentage"
+                },
+                {
+                    "title": "insurance_denied_claims",
+                    "value": 0.14,
+                    "type": "percentage"
+                },
+                {
+                    "title": "insurance_reworked_denied_claims",
+                    "value": 0.50,
+                    "type": "percentage"
+                },
+                {
+                    "title": "insurance_not_reworked_denied_claims",
+                    "value": 0.50,
+                    "type": "percentage"
+                },
+                {
+                    "title": "insurance_reworked_denied_claims_cost",
+                    "value": 25,
+                    "type": "currency"
+                },
+                {
+                    "title": "insurance_avg_intial_claim_cost",
+                    "value": 6.5,
+                    "type": "currency"
+                },
+                {
+                    "title": "insurance_duplicate_claims",
+                    "value": 0.21,
+                    "type": "percentage"
+                },
+                {
+                    "title": "insurance_technical_errors_in_claims",
+                    "value": 0.193,
+                    "type": "percentage"
+                },
+                {
+                    "title": "insurance_avg_claim_cost",
+                    "value": 3422,
+                    "type": "currency"
+                },
+                {
+                    "title": "insurance_data_breach_fee",
+                    "value": 0.05,
+                    "type": "percentage"
+                },
+                {
+                    "title": "insurance_cross_sell_cust_TELUS",
+                    "value": 0.0025,
+                    "type": "percentage"
+                },
+                {
+                    "title": "TELUS_customers_2020",
+                    "value": 12000000,
+                    "type": "number"
+                },
+                {
+                    "title": "insurance_one37_general_cost_savings",
+                    "value": 0.035,
+                    "type": "percentage"
+                },
+                {
+                    "title": "insurance_happy_customers",
+                    "value": 0.025,
+                    "type": "percentage"
+                }            
+               
+            ],
+            "inputs":
+            [
+                {
+                    "title":"revenue",
+                    "type":"currency"
+                },                
+                {
+                    "title":"operating_expenses",
+                    "type":"currency"
+                },
+                {
+                    "title":"total_salary_of_employees",
+                    "type":"currency"
+                }, 
+                {
+                    "title":"num_of_consumers",
+                    "type":"number"
+                }, 
+                {
+                    "title":"num_of_claims",
+                    "type":"number"
+                }
+            ],
+            "outputs":
+            [
+                {
+                    "title":"Fraud Cost Savings",
+                    "formula":"insurance_one37_fraud_savings*insurance_fraud_for_NA*revenue"
+                },
+                {
+                    "title":"Customer Service Savings",
+                    "formula":"insurance_one37_general_cost_savings*insurance_customer_serv*operating_expenses"
+                },
+                {
+                    "title":"No Insurance Claims with Inaccurate Data Savings",
+                    "formula":"insurance_reworked_denied_claims*(insurance_avg_intial_claim_cost + insurance_reworked_denied_claims_cost)*(insurance_technical_errors_in_claims*insurance_denied_claims*num_of_claims) + insurance_avg_claim_cost*insurance_not_reworked_denied_claims*(insurance_technical_errors_in_claims*insurance_denied_claims*num_of_claims)"
+                },
+                {
+                    "title":"No Duplicate Insurance Claims Savings",
+                    "formula":"insurance_avg_claim_cost*insurance_duplicate_claims*num_of_claims"
+                },
+                {
+                    "title":"Possible Cost Savings Associated with No Data Breaches",
+                    "formula":"insurance_data_breach_fee*revenue"
+                },
+                {
+                    "title":"Total Cost Savings (Excluding Data Breaches Cost Savings)",
+                    "formula":"(insurance_one37_fraud_savings*insurance_fraud_for_NA*revenue) + (insurance_one37_general_cost_savings*insurance_customer_serv*operating_expenses) + (insurance_reworked_denied_claims*(insurance_avg_intial_claim_cost + insurance_reworked_denied_claims_cost)*(insurance_technical_errors_in_claims*insurance_denied_claims*num_of_claims) + insurance_avg_claim_cost*insurance_not_reworked_denied_claims*(insurance_technical_errors_in_claims*insurance_denied_claims*num_of_claims)) + (insurance_avg_claim_cost*insurance_duplicate_claims*num_of_claims)"
+                },
+                {
+                    "title":"Revenue Generated from Happy and Loyal Customers",
+                    "formula":"insurance_happy_customers*revenue*(num_of_claims/num_of_consumers)"
+                },
+                {
+                    "title":"Revenue Generated from Cross-Selling TELUS Customers",
+                    "formula":"(revenue/num_of_consumers)*insurance_cross_sell_cust_TELUS*TELUS_customers_2020"
+                },
+                {
+                    "title":"Estimated Total Impact Per Year",
+                    "formula":"(insurance_one37_fraud_savings*insurance_fraud_for_NA*revenue) + (insurance_one37_general_cost_savings*insurance_customer_serv*operating_expenses) + (insurance_reworked_denied_claims*(insurance_avg_intial_claim_cost + insurance_reworked_denied_claims_cost)*(insurance_technical_errors_in_claims*insurance_denied_claims*num_of_claims) + insurance_avg_claim_cost*insurance_not_reworked_denied_claims*(insurance_technical_errors_in_claims*insurance_denied_claims*num_of_claims)) + (insurance_avg_claim_cost*insurance_duplicate_claims*num_of_claims) + (insurance_happy_customers*revenue*(num_of_claims/num_of_consumers)) + ((revenue/num_of_consumers)*insurance_cross_sell_cust_TELUS*TELUS_customers_2020)"
+                }
+            ]
+        },
+        {
+            "name":"Travel",
+            "static":
+            [
+                {
+                    "title": "travel_traffic_serv",
+                    "value": 0.11,
+                    "type": "percentage"
+                },
+                {
+                    "title": "travel_fraud_for_NA",
+                    "value": 0.003,
+                    "type": "percentage"
+                },
+                {
+                    "title": "travel_one37_fraud_savings",
+                    "value": 0.3,
+                    "type": "percentage"
+                },
+                {
+                    "title": "travel_data_breach_fee",
+                    "value": 0.05,
+                    "type": "percentage"
+                },
+                {
+                    "title": "travel_cross_sell_cust_TELUS",
+                    "value": 0.0025,
+                    "type": "percentage"
+                },
+                {
+                    "title": "TELUS_customers_2020",
+                    "value": 12000000,
+                    "type": "number"
+                },
+                {
+                    "title": "travel_one37_general_cost_savings",
+                    "value": 0.035,
+                    "type": "percentage"
+                },
+                {
+                    "title": "travel_happy_customers",
+                    "value": 0.025,
+                    "type": "percentage"
+                },
+                {
+                    "title": "travel_timesave_checkin",
+                    "value": 0.1,
+                    "type": "percentage"
+                },
+                {
+                    "title": "travel_data_accuracy_fee",
+                    "value": 0.01,
+                    "type": "percentage"
+                }            
+               
+            ],
+            "inputs":
+            [
+                {
+                    "title":"revenue",
+                    "type":"currency"
+                },                
+                {
+                    "title":"operating_expenses",
+                    "type":"currency"
+                },
+                {
+                    "title":"total_salary_of_employees",
+                    "type":"currency"
+                }, 
+                {
+                    "title":"num_of_consumers",
+                    "type":"number"
+                }, 
+                {
+                    "title":"num_of_passenger_flights",
+                    "type":"number"
+                }
+            ],
+            "outputs":
+            [
+                {
+                    "title":"Fraud Cost Savings",
+                    "formula":"travel_one37_fraud_savings*travel_fraud_for_NA*revenue*(num_of_consumers/num_of_passenger_flights)"
+                },
+                {
+                    "title":"Traffic Servicing Savings",
+                    "formula":"travel_one37_general_cost_savings*travel_traffic_serv*operating_expenses*(num_of_consumers/num_of_passenger_flights)"
+                },
+                {
+                    "title":"Time Save Through Check-Ins Savings",
+                    "formula":"travel_timesave_checkin*0.19*total_salary_of_employees*(num_of_consumers/num_of_passenger_flights)"
+                },
+                {
+                    "title":"No Canceled Flights due to Data Inaccuracies Savings",
+                    "formula":"travel_data_accuracy_fee*revenue*(num_of_consumers/num_of_passenger_flights)"
+                },
+                {
+                    "title":"Possible Cost Savings Associated with No Data Breaches",
+                    "formula":"travel_data_breach_fee*revenue"
+                },
+                {
+                    "title":"Total Cost Savings (Excluding Data Breaches Cost Savings)",
+                    "formula":"(travel_one37_fraud_savings*travel_fraud_for_NA*revenue*(num_of_consumers/num_of_passenger_flights)) + (travel_one37_general_cost_savings*travel_traffic_serv*operating_expenses*(num_of_consumers/num_of_passenger_flights)) + (travel_timesave_checkin*0.19*total_salary_of_employees*(num_of_consumers/num_of_passenger_flights)) + (travel_data_accuracy_fee*revenue*(num_of_consumers/num_of_passenger_flights))"
+                },
+                {
+                    "title":"Revenue Generated from Happy and Loyal Customers",
+                    "formula":"travel_happy_customers*revenue*(num_of_consumers/num_of_passenger_flights)"
+                },
+                {
+                    "title":"Revenue Generated from Cross-Selling TELUS Customers",
+                    "formula":"(revenue/num_of_passenger_flights)*travel_cross_sell_cust_TELUS*TELUS_customers_2020"
+                },
+                {
+                    "title":"Estimated Total Impact Per Year",
+                    "formula":"(travel_one37_fraud_savings*travel_fraud_for_NA*revenue*(num_of_consumers/num_of_passenger_flights)) + (travel_one37_general_cost_savings*travel_traffic_serv*operating_expenses*(num_of_consumers/num_of_passenger_flights)) + (travel_timesave_checkin*0.19*total_salary_of_employees*(num_of_consumers/num_of_passenger_flights)) + (travel_data_accuracy_fee*revenue*(num_of_consumers/num_of_passenger_flights)) + (travel_happy_customers*revenue*(num_of_consumers/num_of_passenger_flights)) + ((revenue/num_of_passenger_flights)*travel_cross_sell_cust_TELUS*TELUS_customers_2020)"
+                }
+            ]
+        },
+        {
+            "name":"Finance",
+            "static":
+            [
+                {
+                    "title": "finance_fraud_for_NA",
+                    "value": 0.17,
+                    "type": "percentage"
+                },
+                {
+                    "title": "finance_one37_fraud_savings",
+                    "value": 0.43,
+                    "type": "percentage"
+                },
+                {
+                    "title": "finance_customer_serv",
+                    "value": 0.11,
+                    "type": "percentage"
+                },
+                {
+                    "title": "finance_inaccurate_data",
+                    "value": 0.20,
+                    "type": "percentage"
+                },
+                {
+                    "title": "finance_time_lost_to_passwords",
+                    "value": 14
+                },
+                {
+                    "title": "finance_call_per_minute_fee",
+                    "value": 0.95
+                },   
+                {
+                    "title": "finance_data_breach_fee",
+                    "value": 0.05,
+                    "type": "percentage"
+                },
+                {
+                    "title": "finance_cross_sell_cust_TELUS",
+                    "value": 0.0025,
+                    "type": "percentage"
+                },
+                {
+                    "title": "TELUS_customers_2020",
+                    "value": 12000000,
+                    "type": "number"
+                },
+                {
+                    "title": "finance_one37_general_cost_savings",
+                    "value": 0.035,
+                    "type": "percentage"
+                },
+                {
+                    "title": "finance_happy_customers",
+                    "value": 0.025,
+                    "type": "percentage"
+                }       
+               
+            ],
+            "inputs":
+            [
+                {
+                    "title":"revenue",
+                    "type":"currency"
+                },                
+                {
+                    "title":"operating_expenses",
+                    "type":"currency"
+                },
+                {
+                    "title":"total_salary_of_employees",
+                    "type":"currency"
+                }, 
+                {
+                    "title":"num_of_consumers",
+                    "type":"number"
+                }, 
+                {
+                    "title":"num_of_transactions",
+                    "type":"number"
+                }
+            ],
+            "outputs":
+            [
+                {
+                    "title":"Fraud Cost Savings",
+                    "formula":"finance_one37_fraud_savings*finance_fraud_for_NA*revenue"
+                },
+                {
+                    "title":"Customer Service Savings",
+                    "formula":"finance_one37_general_cost_savings*finance_customer_serv*operating_expenses"
+                },
+                {
+                    "title":"No Data Inaccuracies Savings",
+                    "formula":"finance_inaccurate_data*revenue"
+                },
+                {
+                    "title":"Cost Savings Associated with Inputting No Passwords for Verification",
+                    "formula":"finance_call_per_minute_fee*((3*finance_time_lost_to_passwords*num_of_transactions)/60)"
+                },
+                {
+                    "title":"Possible Cost Savings Associated with No Data Breaches",
+                    "formula":"finance_data_breach_fee*revenue"
+                },
+                {
+                    "title":"Total Cost Savings (Excluding Data Breaches Cost Savings)",
+                    "formula":"(finance_one37_fraud_savings*finance_fraud_for_NA*revenue) + (finance_one37_general_cost_savings*finance_customer_serv*operating_expenses) + (finance_inaccurate_data*revenue) + (finance_call_per_minute_fee*((3*finance_time_lost_to_passwords*num_of_transactions)/60))"
+                },
+                {
+                    "title":"Revenue Generated from Happy and Loyal Customers",
+                    "formula":"finance_happy_customers*revenue*(num_of_transactions/num_of_consumers)"
+                },
+                {
+                    "title":"Revenue Generated from Cross-Selling TELUS Customers",
+                    "formula":"(revenue/num_of_consumers)*finance_cross_sell_cust_TELUS*TELUS_customers_2020"
+                },
+                {
+                    "title":"Estimated Total Impact Per Year",
+                    "formula":"(finance_one37_fraud_savings*finance_fraud_for_NA*revenue) + (finance_one37_general_cost_savings*finance_customer_serv*operating_expenses) + (finance_inaccurate_data*revenue) + (finance_call_per_minute_fee*((3*finance_time_lost_to_passwords*num_of_transactions)/60)) + (finance_happy_customers*revenue*(num_of_transactions/num_of_consumers)) + ((revenue/num_of_consumers)*finance_cross_sell_cust_TELUS*TELUS_customers_2020)"
+                }
+            ]
+        },
+        {
+            "name":"Education",
+            "static":
+            [
+                {
+                    "title": "education_fraud_for_NA",
+                    "value": 0.064,
+                    "type": "percentage"
+                },
+                {
+                    "title": "education_one37_fraud_savings",
+                    "value": 0.55,
+                    "type": "percentage"
+                },
+                {
+                    "title": "education_inaccurate_data",
+                    "value": 0.20,
+                    "type": "percentage"
+                },
+                {
+                    "title": "education_student_card_cost",
+                    "value": 30
+                },
+                {
+                    "title": "education_diploma_cost",
+                    "value": 33
+                },   
+                {
+                    "title": "education_data_breach_fee",
+                    "value": 0.05,
+                    "type": "percentage"
+                },
+                {
+                    "title": "education_cross_sell_cust_TELUS",
+                    "value": 0.0025,
+                    "type": "percentage"
+                },
+                {
+                    "title": "TELUS_customers_2020",
+                    "value": 12000000,
+                    "type": "number"
+                },
+                {
+                    "title": "education_one37_general_cost_savings",
+                    "value": 0.035,
+                    "type": "percentage"
+                },
+                {
+                    "title": "education_happy_customers",
+                    "value": 0.025,
+                    "type": "percentage"
+                }       
+               
+            ],
+            "inputs":
+            [
+                {
+                    "title":"revenue",
+                    "type":"currency"
+                },                
+                {
+                    "title":"operating_expenses",
+                    "type":"currency"
+                },
+                {
+                    "title":"total_salary_of_employees",
+                    "type":"currency"
+                }, 
+                {
+                    "title":"num_of_consumers",
+                    "type":"number"
+                }, 
+                {
+                    "title":"num_of_diplomas_issued",
+                    "type":"number"
+                }
+            ],
+            "outputs":
+            [
+                {
+                    "title":"Fraud Cost Savings",
+                    "formula":"education_one37_fraud_savings*education_fraud_for_NA*revenue"
+                },
+                {
+                    "title":"Less Physical Diplomas Being Printed Savings",
+                    "formula":"0.50*education_diploma_cost*num_of_diplomas_issued"
+                },
+                {
+                    "title":"No Data Inaccuracies Savings",
+                    "formula":"education_inaccurate_data*revenue"
+                },
+                {
+                    "title":"No Physical Student ID Cards Being Printed Savings",
+                    "formula":"education_student_card_cost*num_of_consumers"
+                },
+                {
+                    "title":"Possible Cost Savings Associated with No Data Breaches",
+                    "formula":"education_data_breach_fee*revenue"
+                },
+                {
+                    "title":"Total Cost Savings (Excluding Data Breaches Cost Savings)",
+                    "formula":"(education_one37_fraud_savings*education_fraud_for_NA*revenue) + (0.50*education_diploma_cost*num_of_diplomas_issued) + (education_inaccurate_data*revenue) + (education_student_card_cost*num_of_consumers)"
+                },
+                {
+                    "title":"Revenue Generated from Happy and Loyal Customers",
+                    "formula":"education_happy_customers*revenue*(num_of_diplomas_issued/num_of_consumers)"
+                },
+                {
+                    "title":"Revenue Generated from Cross-Selling TELUS Customers",
+                    "formula":"(revenue/num_of_consumers)*education_cross_sell_cust_TELUS*TELUS_customers_2020"
+                },
+                {
+                    "title":"Estimated Total Impact Per Year",
+                    "formula":"(education_one37_fraud_savings*education_fraud_for_NA*revenue) + (0.50*education_diploma_cost*num_of_diplomas_issued) + (education_inaccurate_data*revenue) + (education_student_card_cost*num_of_consumers) + (education_happy_customers*revenue*(num_of_diplomas_issued/num_of_consumers)) + ((revenue/num_of_consumers)*education_cross_sell_cust_TELUS*TELUS_customers_2020)"
+                }
+            ]
+        }
+    ]
+}
