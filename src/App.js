@@ -2,7 +2,7 @@ import './App.css';
 import { BrowserRouter as Router, Route, Switch, Link } from "react-router-dom";
 import NotFound from './pages/NotFound';
 import Telecom from './pages/Telecom';
-import HealthCAre from './pages/HealthCAre';
+import HealthCare from './pages/HealthCare';
 import Insurance from './pages/Insurance';
 import Travel from './pages/Travel';
 import Finance from './pages/Finance';
@@ -37,7 +37,7 @@ function App() {
         </nav>
         <Switch>
           <Route path="/" exact component={Telecom} />
-          <Route path="/healthcare" component={HealthCAre} />
+          <Route path="/healthcare" component={HealthCare} />
           <Route path="/insurance" component={Insurance} />
           <Route path="/travel" component={Travel} />
           <Route path="/finance" component={Finance} />

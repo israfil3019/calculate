@@ -1,19 +1,54 @@
 .app {
   text-align: center;
 }
-.container{
-  margin: 10px 2rem;
-}
-.calculator-wrapper{
-  display:flex;
-  flex-wrap: wrap;
-}
 
 * {
   margin: 0;
   padding: 0;
   font-family: cursive;
 }
+
+.container {
+  margin: 10px 2rem;
+}
+.calculator-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.telecom #insurance-last,
+.telecom #travel-last,
+.telecom #health-last,
+.telecom #education-last,
+.telecom #finance-last,
+.travel #insurance-last,
+.travel #telecom-last,
+.travel #health-last,
+.travel #education-last,
+.travel #finance-last,
+.health #insurance-last,
+.health #travel-last,
+.health #telecom-last,
+.health #education-last,
+.health #finance-last,
+.insurance #telecom-last,
+.insurance #travel-last,
+.insurance #health-last,
+.insurance #education-last,
+.insurance #finance-last,
+.education #insurance-last,
+.education #travel-last,
+.education #health-last,
+.education #telecom-last,
+.education #finance-last,
+.finance #insurance-last,
+.finance #travel-last,
+.finance #health-last,
+.finance #education-last,
+.finance #telecom-last {
+  display: none;
+}
+
 nav {
   background-color: rgb(67, 14, 116);
   display: flex;
@@ -33,7 +68,7 @@ nav ul li {
   cursor: pointer;
   padding: 0.6rem 1rem;
 }
-nav ul li a{
+nav ul li a {
   color: white;
   text-decoration: none;
 }
@@ -42,4 +77,16 @@ nav ul li:hover {
 }
 h1 {
   text-align: center;
+}
+
+.output-container {
+  text-align: left;
+  margin: 1rem 3rem;
+  max-width: 900px;
+}
+.output {
+  margin: 1rem 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
